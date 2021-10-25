@@ -7,6 +7,7 @@ import Pages.WebCommands;
 import Utils.DropDowns;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 
 public class TestCases extends Web {
@@ -19,7 +20,7 @@ public class TestCases extends Web {
     public void launchHotels(){
         openWebpage();
     }
-    @Then("I click Check In")
+    @When("I click Check In")
     public void clickCheckIn(){
         homepage.clickCheckIn();
     }
@@ -104,21 +105,21 @@ public class TestCases extends Web {
     }
 
     //TC-19
-    @Then("click Search Box and type 'Bora'")
-    public void searchBox(){
+    @Then("click Search Box and type '(.+)'")
+    public void searchBox(String text){
         homepage.searching("Bora");
     }
-    @Then("select 'Bora Bora'")
-    public void selectingBoraBoraFrench(){
-        homepage.selectingBoraBora();
+    @Then("select '(.+)'")
+    public void selectingBoraBoraFrench(String text){
+        homepage.selectingBoraBora("Bora Bora");
     }
-    @Then("I select Check-in date")
-    public void selectingNovCheckIn (){
-        homepage.checkInNovember2021();
+    @Then("I select Check-in date as '(.+)'")
+    public void selectingNovCheckIn (String count){
+        homepage.checkInNovember2021("1");
     }
-    @Then("I select Check-out date from calendar")
-    public void selectingNovCheckOut (){
-        homepage.checkOutNovember2021();
+    @Then("I select Check-out date from calendar as '(.+)'")
+    public void selectingNovCheckOut (String count){
+        homepage.checkOutNovember2021("15");
 
     }
     @Then("I click Search Button")

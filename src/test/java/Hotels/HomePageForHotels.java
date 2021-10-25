@@ -94,15 +94,16 @@ public void totalPeople (){
 public void searching (String name){
         getWebElement(searchButtonLocator).sendKeys(name);
 }
-public void selectingBoraBora(){
+public void selectingBoraBora(String text){
         clickUsingActionsClass(selectingBoraFromAutoSuggestions);
+
 }
 
-public void checkInNovember2021 (){
-        calendar(november2021Calendar,"1");
+public void checkInNovember2021 (String count){
+        calendar(november2021Calendar,count);
 }
-public void checkOutNovember2021(){
-        calendar(november2021Calendar,"15");
+public void checkOutNovember2021(String count){
+        calendar(november2021Calendar,count);
 }
 public void clickSearchButton (){
 
