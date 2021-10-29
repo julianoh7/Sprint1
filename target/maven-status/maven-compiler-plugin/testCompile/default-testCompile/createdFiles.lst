@@ -1,5 +1,8 @@
-Hotels/HomePageForHotels.class
+StepDefinition/TestCasesForSprint2.class
 Pages/WebCommands.class
-TestRunner.class
-DriverWrapper/Web.class
 StepDefinition/TestCases.class
+Hotels/HomePageForHotels.class
+TestRunner.class
+Hotels/SignInPage.class
+Utils/DropDowns.class
+DriverWrapper/Web.class

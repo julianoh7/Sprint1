@@ -16,7 +16,7 @@ public class Web {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get("https://www.hotels.com/");
         driver.manage().window().maximize();
-
+        driver.navigate().refresh();
     }
     public WebDriver getDriver(){
         return driver;

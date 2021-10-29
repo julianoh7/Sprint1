@@ -29,16 +29,20 @@ public class HomePageForHotels extends WebCommands {
     By signUpLocator = By.xpath("//a[text()='Sign up']");
 
     By searchButtonLocator = By.xpath("//input[@name='q-destination']");
-    //By boraSuggestionsLocator = By.xpath("//div[contains(@class,'typeahead')]//span[not(@class)]");
     By selectingBoraFromAutoSuggestions = By.xpath("(//div[contains(@class,'typeahead')]//span[@class='highlighted'])[1]");
-    //CheckinLocator
-    By november2021Calendar = By.xpath("//h2[text()='November 2021']/following-sibling::table//button");
+    //CheckinLocator for nov //h2[text()='November 2021']/following-sibling::table//button
+    By november2021Calendar = By.xpath("//h2[text()='November 2021']/following-sibling::table//button[contains(@name, 'Eastern ')]");
     By searchBoxLocator = By.xpath("//button[text()='Search']");
     By lol = By.xpath("//button[@aria-label='Change dates']");
     By termsAndConditionsLocator = By.xpath("//a[text()='Terms and Conditions']");
     String signUpPageUrl = "https://www.hotels.com/profile/signup.html";
     By privacyAndStatementLocator = By.xpath("//a[text()='Privacy Statement']");
-
+    By helpButtonLocator = By.xpath("//span[text()='Help']");
+    By websiteFeedBackLocator = By.xpath("(//a[text()='Website feedback'])[1]");
+    By whyBookWithHotelsLocator = By.xpath("//h2[text()='Why book with Hotels.com?']");
+    By freeCancellationLocator = By.xpath("(//h2[text()='Why book with Hotels.com?']/following-sibling::ul//li)[1]");
+    By ourPriceGuaranteeLocator = By.xpath("(//h2[text()='Why book with Hotels.com?']/following-sibling::ul//li)[2]");
+    By getARewardNightLocator = By.xpath("(//h2[text()='Why book with Hotels.com?']/following-sibling::ul//li)[3]");
     public void clickCheckIn (){
         clickUsingActionsClass(checkInLocator);
     }
@@ -143,6 +147,39 @@ public void clickSearchButton (){
         JavascriptExecutor js = (JavascriptExecutor) web.getDriver();
         js.executeScript("scrollBy(0,300)");
         clickUsingActionsClass(privacyAndStatementLocator);
+    }
+
+    public void clickHelpButton (){
+        clickUsingActionsClass(helpButtonLocator);
+    }
+
+    public void clickWebsiteFeedback (){
+        clickUsingActionsClass(websiteFeedBackLocator);
+    }
+    public void gettingDropDown (String text){
+        dropDown(helpButtonLocator,text);
+    }
+    public  void scrollToWhyBookWithHotels (){
+        scrollToView(whyBookWithHotelsLocator);
+    }
+    public boolean freeCancellationDisplayed(){
+        return isWebElementDisplayed(freeCancellationLocator);
+    }
+    public boolean ourPriceGuaranteeDisplayed(){
+        return isWebElementDisplayed(ourPriceGuaranteeLocator);
+    }
+    public boolean getARewardNightDisplayed(){
+        return isWebElementDisplayed(getARewardNightLocator);
+    }
+    public void clickOurPriceGuarantee (){
+        clickUsingActionsClass(ourPriceGuaranteeLocator);
+    }
+    public void navigateBackToWhyBookWithHotelsSection(){
+        navigateBack();
+        scrollToWhyBookWithHotels();
+    }
+    public void clickOnGetARewardNight(){
+        clickUsingActionsClass(getARewardNightLocator);
     }
 
 

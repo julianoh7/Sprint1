@@ -5,8 +5,8 @@ Feature: Verify
     Given I am on Hotels Homepage
     When  I click Check In
     And   I get disabled dates
-    Then  I get the elements in text format
-    And   I see if back button is disabled
+    And   I get the elements in text format
+    Then  I see if back button is disabled
     And   I quit
 
     @sanity @TC-18
@@ -26,8 +26,8 @@ Feature: Verify
   Scenario: Verify error message for invalid sign in credentials
     Given I am on Hotels Homepage
     When  I click on Sign in
-    And   I enter invalid email
-    And   I enter invalid password
+    And   I enter email as 'jamesBond@gmail.com'
+    And   I enter password as 'Albania12345!'
     Then  I click signIn box
     Then  I verify error message is displayed
     And   I quit
@@ -38,8 +38,8 @@ Feature: Verify
     When  click Search Box and type 'Bora'
     And   select 'Bora Bora'
     And   I click Check In
-    Then  I select Check-in date as '1'
-    Then  I select Check-out date from calendar as '15'
+    Then  I select Check-in date as '4'
+    Then  I select Check-out date from calendar as '20'
     And   I click apply
     Then  I click Search Button
     Then  I scroll to bottom of page
