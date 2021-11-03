@@ -86,13 +86,13 @@ public class TestCases extends Web {
     public void clickSignIn (){
         signInPage.clickSignInLocator();
     }
-    @Then("I enter invalid email")
-    public void signInEmail (){
-        signInPage.enterEmail("jamespeterson12@gmail.com");
+    @Then("I enter email as '(.+)'")
+    public void signInEmail (String data){
+        signInPage.enterEmail(data);
     }
-    @Then("I enter invalid password")
-    public void signInPassword(){
-        signInPage.enterPassword("James1997!");
+    @Then("I enter password as '(.+)'")
+    public void signInPassword(String data){
+        signInPage.enterPassword(data);
     }
     @Then("I click signIn box")
     public void clickSignInInsideSignInPage (){
@@ -115,12 +115,21 @@ public class TestCases extends Web {
     }
     @Then("I select Check-in date as '(.+)'")
     public void selectingNovCheckIn (String count){
-        homepage.checkInNovember2021("1");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        homepage.checkInNovember2021(count);
     }
     @Then("I select Check-out date from calendar as '(.+)'")
     public void selectingNovCheckOut (String count){
-        homepage.checkOutNovember2021("15");
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        homepage.checkOutNovember2021(count);
     }
     @Then("I click Search Button")
     public void clickingSearchButton(){

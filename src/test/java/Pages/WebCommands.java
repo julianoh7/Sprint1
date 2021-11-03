@@ -30,6 +30,9 @@ public class WebCommands {
         Actions actions = new Actions(web.getDriver());
         actions.click(element).build().perform();
     }
+    public void clickThis(By locator){
+        getWebElement(locator).click();
+    }
 
     public void type(String data, By locator) {
         getWebElement(locator).sendKeys(data);
@@ -48,6 +51,13 @@ public class WebCommands {
         b.executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
+    public void scrollBy300Pixels() {
+       String lol = web.getDriver().getCurrentUrl();
+        web.getDriver().switchTo().window(lol);
+
+        JavascriptExecutor js = (JavascriptExecutor)web.getDriver().switchTo().window(lol);
+        js.executeScript("scrollBy(0,300)");
+    }
     public void scrollDownByPixels() {
         JavascriptExecutor js = (JavascriptExecutor) web.getDriver();
             js.executeScript("scrollBy(0,500)");
@@ -88,8 +98,13 @@ public class WebCommands {
         }
     }
     public void scrollToView(By element){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         JavascriptExecutor je = (JavascriptExecutor) web.getDriver();
-        je.executeScript("arguments[0].scrollIntoView(true);", element);
+        je.executeScript("arguments[0].scrollIntoView()",getWebElement(element));
     }
 
     public void movingMouseHoverMethod(By locator) {
@@ -126,14 +141,36 @@ public void getWindowHandles(int windowHandleCount){
 public void switchingWindowHandle (String url){
         Set<String> windowHandles = web.getDriver().getWindowHandles();
         String currentHandle = web.getDriver().getWindowHandle();
+
         for (String windowHandle : windowHandles){
             web.getDriver().switchTo().window(windowHandle);
             String currentUrl = web.getDriver().getCurrentUrl();
-            if (currentUrl.equalsIgnoreCase(url)){
+            if (currentUrl.contains(url)){
                 return;
             }
         }
         web.getDriver().switchTo().window(currentHandle);
 }
+public void dropDown (By locator,String text){
+    WebElement element = getWebElement(locator);
+    Select dropDown = new Select(element);
+    dropDown.selectByVisibleText(text);
+}
+    public void getWebElementsAndClickUsingActionsClass (By element ,String count) {
+        List<WebElement> dates = web.getDriver().findElements(element);
+        Actions actions = new Actions(web.getDriver());
+        switchingWindowHandle("https://www.directword.io/survey/domain=www.hotels.com/locale=en_US?metadata=%7B%22url%22%3A%22https%3A%2F%2Fwww.hotels.com%2F%22%2C%22pagename%22%3A%22home%20page%22%2C%22appname%22%3A%22kes%22%2C%22appversion%22%3A%221.1.2244%22%7D");
+        for (WebElement date : dates) {
+            if (date.getText().equalsIgnoreCase(count)) {
+                actions.click(date).build().perform();
+            }
+        }
+    }
+    public void navigateBack (){
+        web.getDriver().navigate().back();
+    }
+    public void navigateForward (){
+        web.getDriver().navigate().forward();
+    }
 
 }
